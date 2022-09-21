@@ -1,7 +1,7 @@
+from module import weather,getConfig,send_icon
 from flask import Flask,render_template
 from dotenv import load_dotenv
 from os import system,environ
-from module import weather,getConfig
 from flask import Response
 from flask import request
 from time import sleep
@@ -98,7 +98,19 @@ def send_parse_message(chat_id, text, parse_mode):
                 }
 
     r = requests.post(url,json=payload)
-    return r    
+    return r 
+     
+# Sending Image  
+def send_image(chat_id,img_url,caption):
+    url = f'https://api.telegram.org/bot{BOT_TOKEN}/sendPhoto'
+    payload = {
+        'chat_id': chat_id,
+        'photo': img_url,
+        'caption': caption
+    }
+ 
+    r = requests.post(url, json=payload)
+    return r  
 
 # Buttton Function
 def send_inlinebutton(chat_id,welcome_text,repo,support):
@@ -136,14 +148,15 @@ def index():
         send_inlinebutton(chat_id,welcome_text,repo,support)
         
       elif txt != None and txt == "/help": # Help
-        send_message(chat_id,f"Simply type /use followed by city name to get weather details.")
+        send_message(chat_id,f"Simply type /get followed by city name to get weather details.")
                 
-      elif txt != None and "/city" in txt : 
-        city  = remove(txt[5:])
+      elif txt != None and "/get" in txt : 
+        city  = remove(txt[4:])
+        send_image(chat_id,send_icon(city),"")
         send_message(chat_id,weather(city))
-
+        
       else: # invalid command
-        send_message(chat_id,"inv command") 
+        send_message(chat_id,"") 
         
       return Response('ok', status=200)
     
