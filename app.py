@@ -31,43 +31,43 @@ app = Flask(__name__)
 def parse_message(message):
   try: # If user has a username
     if "message" in message.keys(): 
-      chat_id = message['message']['from']['id']
-      fname = message['message']['from']['first_name']
-      uname = message['message']['from']['username']
+      chat_id = message['message']['chat']['id']
+      fname = message['message']['chat']['first_name']
+      uname = message['message']['chat']['username']
       txt = message['message']['text']      
     elif "edited_message" in message.keys():
-      chat_id = message['edited_message']['from']['id'] 
+      chat_id = message['edited_message']['chat']['id'] 
       fname = message['edited_message']['from']['first_name'] 
       uname = message['edited_message']['from']['username'] 
       txt = message['edited_message']['text']
     elif "callback_query" in message.keys():
-      chat_id = message['callback_query']['from']['id']
+      chat_id = message['callback_query']['chat']['id']
       fname = message['callback_query']['from']['first_name'] 
       uname = message['callback_query']['from']['username'] 
       txt = message['callback_query']['data']  
     elif "my_chat_member" in message.keys():
-      chat_id = message['my_chat_member']['from']['id']
+      chat_id = message['my_chat_member']['chat']['id']
       fname = message['my_chat_member']['from']['first_name'] 
       uname = message['my_chat_member']['from']['username']
       txt = message['my_chat_member']['from']['first_name']  
   except: # IF user has no username
     uname = " NoUsername"
     if "message" in message.keys(): 
-      chat_id = message['message']['from']['id']
+      chat_id = message['message']['chat']['id']
       fname = message['message']['from']['first_name']
-      txt = message['message']['text']      
+      txt = message['message']['text']
     elif "edited_message" in message.keys():
-      chat_id = message['edited_message']['from']['id'] 
+      chat_id = message['edited_message']['chat']['id'] 
       fname = message['edited_message']['from']['first_name'] 
       txt = message['edited_message']['text']
     elif "callback_query" in message.keys():
-      chat_id = message['callback_query']['from']['id']
+      chat_id = message['callback_query']['chat']['id']
       fname = message['callback_query']['from']['first_name'] 
       txt = message['callback_query']['data']  
     elif "my_chat_member" in message.keys():
-      chat_id = message['my_chat_member']['from']['id']
+      chat_id = message['my_chat_member']['chat']['id']
       fname = message['my_chat_member']['from']['first_name'] 
-      txt = message['my_chat_member']['from']['first_name'] 
+      txt = message['my_chat_member']['from']['first_name']    
   print("================================|  JSON  |==========================")    
   print("📺 TG-JSON-->",message)        
   print("-------------------------------------------")
@@ -143,12 +143,12 @@ def index():
         send_message(chat_id,weather(city))
 
       else: # invalid command
-        send_message(chat_id,f'⚠️Invalid Command 🙂') 
+        send_message(chat_id,"inv command") 
         
       return Response('ok', status=200)
     
     else:
-        return f"<h1> HEllo {city} </h1>"
+        return "<h1> HEllo </h1>"
 
 if __name__ == '__main__':
    app.run(debug=True)
