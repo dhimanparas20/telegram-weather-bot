@@ -44,22 +44,23 @@ def weather(city):
     set = x['sys']['sunset']
     a = datetime.fromtimestamp(rise)
     b = datetime.fromtimestamp(set) 
+    icon_link = f"http://openweathermap.org/img/wn/{x['weather'][0]['icon']}@2x.png"
     try:
         gnd_lvl = x['main']['grnd_level']
     except:
         gnd_lvl = "null"    
     return(        
-      f"-------------|🏙️ {city} ({x['sys']['country']}) |---------------"+
-      f"\n\n🌡️Current Temperature: {x['main']['temp']}°C"+
-      f"\n🏝️Description:                 {x['weather'][0]['description']}"+
-      f"\n🍃Wind Speed:                {x['wind']['speed']} m/s"+
-      f"\n🌎Latitude:                       {x['coord']['lat']}°"+
-      f"\n🌍Longitude:                    {x['coord']['lon']}°"+
-      f"\n🍾Pressure:                      {x['main']['pressure']} mmHg"+
-      f"\n🛬Ground Level:               {gnd_lvl} m"+
-      f"\n👀Visibility:                       {x['visibility']} m"+
-      f"\n🌅Sunrise(IST):                 {a} Am"+
-      f"\n🌆Sunset(IST):                  {b} Pm"+
+      f"---------------| {city} ({x['sys']['country']}) |---------------"+
+      f"\n🌡️Current Temperature: {x['main']['temp']}°C"+
+      f"\n🏝️Description:       {x['weather'][0]['description']}"+
+      f"\n🍃Wind Speed:      {x['wind']['speed']} m/s"+
+      f"\n🌎Latitude:             {x['coord']['lat']}°"+
+      f"\n🌍Longitude:          {x['coord']['lon']}°"+
+      f"\n🍾Pressure:            {x['main']['pressure']} mmHg"+
+      f"\n🛬Ground Level:     {gnd_lvl} m"+
+      f"\n👀Visibility:             {x['visibility']} m"+
+      f"\n🌅Sunrise(IST):       {a} Am"+
+      f"\n🌆Sunset(IST):        {b} Pm"+
       f"\n-----------------------------------------------------"
     )  
   elif response.status_code == 404 :
@@ -70,4 +71,19 @@ def weather(city):
     return "API Limit exceeded 🙁 Current Plan. Please wait untill limit renewal."
   else :
     return "Unknown error occurred. Please try again"
-    
+
+def send_icon(city):
+  url = f"{base_url}{city}&appid={OPEN_WEATHER_API}&units=metric"
+  response = requests.get(url)
+  if response.status_code == 200 :
+    x = response.json()  
+    icon_link = f"http://openweathermap.org/img/wn/{x['weather'][0]['icon']}@2x.png"
+    return(icon_link)
+  elif response.status_code == 404 :
+    return ""
+  elif response.status_code == 401 :
+    return ""
+  elif response.status_code == 429 :
+    return ""
+  else :
+    return ""
