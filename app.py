@@ -154,7 +154,7 @@ def index():
         send_image(chat_id,send_icon(city),"")
         send_message(chat_id,weather(city))
       
-      elif txt == "oof" :
+      elif txt == "oof" or txt == "Oof" :
           send_reply(chat_id,"oof ++",m_id)
           
       elif txt == "F" or txt == "f" :
