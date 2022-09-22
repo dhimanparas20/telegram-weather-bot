@@ -52,7 +52,7 @@ def parse_message(message):
       txt = message['my_chat_member']['from']['first_name']   
   except:
     chat_id = "1248206607"
-    fname = "papa"
+    fname = "Running exception"
     m_id = " "
     txt = " "       
   print("================================|  JSON  |==========================")    
