@@ -140,7 +140,7 @@ def index():
       chat_id,txt,fname,m_id = parse_message(msg)
       
       if txt == "/start":  # Display welcome text
-        welcome_text = f"👋Hello! {fname}.\n🔹Press Help Button For for details."
+        welcome_text = f"👋Hello! {fname}.\n🔹type /help For for details."
         support = "https://t.me/mst_roms_X00T"
         repo = "https://github.com/dhimanparas20/telegram-weather-bot "
         send_inlinebutton(chat_id,welcome_text,repo,support)
