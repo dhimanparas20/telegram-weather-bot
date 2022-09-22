@@ -59,8 +59,8 @@ def weather(city):
       f"\n🍾Pressure:            {x['main']['pressure']} mmHg"+
       f"\n🛬Ground Level:     {gnd_lvl} m"+
       f"\n👀Visibility:             {x['visibility']} m"+
-      f"\n🌅Sunrise(IST):       {a} Am"+
-      f"\n🌆Sunset(IST):        {b} Pm"+
+      f"\n🌅Sunrise:       {a} Am"+
+      f"\n🌆Sunset:        {b} Pm"+
       f"\n-----------------------------------------------------"
     )  
   elif response.status_code == 404 :
