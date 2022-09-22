@@ -120,7 +120,6 @@ def send_inlinebutton(chat_id,welcome_text,repo,support):
         'text': f"{welcome_text}",
         'reply_markup': {
             "inline_keyboard": [
-                [{"text":"HELP","callback_data":"/help"}],
                 [{"text": "Bot Repo", "url": f"{repo}"}],
                 [{"text": "Support", "url": f"{support}"}]
             ]    
