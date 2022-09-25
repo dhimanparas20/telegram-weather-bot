@@ -174,19 +174,19 @@ def index():
       elif txt == "loading" or txt == "Loading" or txt == "Load" or txt == "load"    :
         send_reply(chat_id,"Loading",m_id)
         edit_message(chat_id,m_id+1,"▰▱▱▱▱▱▱")
-        sleep(0.4
+        sleep(0.4)
         edit_message(chat_id,m_id+1,"▰▰▱▱▱▱▱")
-        sleep(0.4
+        sleep(0.4)
         edit_message(chat_id,m_id+1,"▰▰▰▱▱▱▱")
-        sleep(0.4
+        sleep(0.4)
         edit_message(chat_id,m_id+1,"▰▰▰▰▱▱▱")
-        sleep(0.4
+        sleep(0.4)
         edit_message(chat_id,m_id+1,"▰▰▰▰▰▱▱")
-        sleep(0.4
+        sleep(0.4)
         edit_message(chat_id,m_id+1,"▰▰▰▰▰▰▱")
-        sleep(0.4
+        sleep(0.4)
         edit_message(chat_id,m_id+1,"▰▰▰▰▰▰▱")
-        sleep(0.4
+        sleep(0.4)
         edit_message(chat_id,m_id+1,"▰▰▰▰▰▰▰")
         
       else: # invalid command
