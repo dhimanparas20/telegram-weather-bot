@@ -16,14 +16,14 @@ HEROKU_APP_NAME = getConfig("HEROKU_APP_NAME")
 system("clear")  # Cause we like everything clean 
 
 # Heroku Run, to configure Webhook
-print("-----------------------Attaching HEROKU Webhook---------------------------")
-system (f"curl https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url=https://{HEROKU_APP_NAME}.herokuapp.com/ ")
-print("\n-----------------------------------------------------------------")
+#print("-----------------------Attaching HEROKU Webhook---------------------------")
+#system (f"curl https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url=https://{HEROKU_APP_NAME}.herokuapp.com/ ")
+#print("\n-----------------------------------------------------------------")
 
 # Local Run. keep this commented untill deploying manually/locally
-#print("-----------------------Attaching LOCAL Webhook---------------------------")
-#system(f"curl https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url={HEROKU_APP_NAME}")
-#print("\n-----------------------------------------------------------------")
+print("-----------------------Attaching LOCAL Webhook---------------------------")
+system(f"curl https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url={HEROKU_APP_NAME}")
+print("\n-----------------------------------------------------------------")
 sleep(2)
 
 app = Flask(__name__)
@@ -126,7 +126,19 @@ def send_inlinebutton(chat_id,welcome_text,repo,support):
         }
     }
     r = requests.post(url, json=payload)
-    return r        
+    return r  
+
+# Edit bot message  
+def edit_message(chat_id,m_id,text): 
+    url = f'https://api.telegram.org/bot{BOT_TOKEN}/editMessageText' 
+    payload = {
+                'chat_id' : chat_id,
+                'message_id': m_id,
+                'text': text
+                }
+
+    r = requests.post(url,json=payload)
+    return r     
 
 # function to remove extra spaces while extracting substrings
 def remove(string):
@@ -157,7 +169,29 @@ def index():
           send_reply(chat_id,"oof ++",m_id)
           
       elif txt == "F" or txt == "f" :
-          send_reply(chat_id,"uck",m_id)    
+          send_reply(chat_id,"uck",m_id)
+          
+      elif txt == "loading" or txt == "Loading" or txt == "Load" or txt == "load"    :
+        send_reply(chat_id,"Loading",m_id)
+        edit_message(chat_id,m_id+1,"▰▱▱▱▱▱▱")
+        sleep(0.3)
+        edit_message(chat_id,m_id+1,"▰▰▱▱▱▱▱")
+        sleep(0.3)
+        edit_message(chat_id,m_id+1,"▰▰▰▱▱▱▱")
+        sleep(0.3)
+        edit_message(chat_id,m_id+1,"▰▰▰▰▱▱▱")
+        sleep(0.3)
+        edit_message(chat_id,m_id+1,"▰▰▰▰▰▱▱")
+        sleep(0.3)
+        edit_message(chat_id,m_id+1,"▰▰▰▰▰▰▱")
+        sleep(0.3)
+        edit_message(chat_id,m_id+1,"▰▰▰▰▰▰▱")
+        sleep(0.3)
+        edit_message(chat_id,m_id+1,"▰▰▰▰▰▰▰")
+      
+      elif txt == "test"  :
+          print("i run")
+          edit_message(chat_id,574,"gendu hai kya") 
         
       else: # invalid command
         send_message(chat_id,"") 
