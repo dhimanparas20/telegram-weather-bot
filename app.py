@@ -171,22 +171,22 @@ def index():
       elif txt == "F" or txt == "f" :
           send_reply(chat_id,"uck",m_id)
           
-      elif txt == "loading" or txt == "Loading" or txt == "Load" or txt == "load"    :
+      elif "loading" in txt or "Loading" in txt or "Load" in txt or "load" in txt:
         send_reply(chat_id,"Loading",m_id)
         edit_message(chat_id,m_id+1,"▰▱▱▱▱▱▱")
-        sleep(0.4)
+        sleep(0.2)
         edit_message(chat_id,m_id+1,"▰▰▱▱▱▱▱")
-        sleep(0.4)
+        sleep(0.2)
         edit_message(chat_id,m_id+1,"▰▰▰▱▱▱▱")
-        sleep(0.4)
+        sleep(0.2)
         edit_message(chat_id,m_id+1,"▰▰▰▰▱▱▱")
-        sleep(0.4)
+        sleep(0.2)
         edit_message(chat_id,m_id+1,"▰▰▰▰▰▱▱")
-        sleep(0.4)
+        sleep(0.2)
         edit_message(chat_id,m_id+1,"▰▰▰▰▰▰▱")
-        sleep(0.4)
+        sleep(0.2)
         edit_message(chat_id,m_id+1,"▰▰▰▰▰▰▱")
-        sleep(0.4)
+        sleep(0.2)
         edit_message(chat_id,m_id+1,"▰▰▰▰▰▰▰")
         
       else: # invalid command
