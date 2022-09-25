@@ -188,6 +188,8 @@ def index():
         edit_message(chat_id,m_id+1,"▰▰▰▰▰▰▱")
         sleep(0.2)
         edit_message(chat_id,m_id+1,"▰▰▰▰▰▰▰")
+        sleep(0.2)
+        edit_message(chat_id,m_id+1,"😊 Keep Smiling 😊")
         
       else: # invalid command
         send_message(chat_id,"") 
