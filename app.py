@@ -17,7 +17,7 @@ system("clear")  # Cause we like everything clean
 
 # Heroku Run, to configure Webhook
 print("-----------------------Attaching HEROKU Webhook---------------------------")
-system (f"curl https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url=https://{HEROKU_APP_NAME}.herokuapp.com/ ")
+system (f"curl https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url=https://{HEROKU_APP_NAME}.onrender.com/ ")
 print("\n-----------------------------------------------------------------")
 
 # Local Run. keep this commented untill deploying manually/locally
